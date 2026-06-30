@@ -52,7 +52,7 @@ if __name__ == "__main__":
     source_file_path = input("Enter the name/path of your source text file (e.g., notes.txt): ")
     
     if not os.path.exists(source_file_path):
-        print(f"\n❌ Error: Could not find a file named '{source_file_path}' in this folder.")
+        print(f"\n[Error]: Could not find a file named '{source_file_path}' in this folder.")
         print("Please create the file first and paste your study material inside it.")
     else:
         with open(source_file_path, "r", encoding="utf-8") as f:
@@ -61,13 +61,13 @@ if __name__ == "__main__":
         deck = generate_bytes_deck(dense_academic_text, focus)
         
         print("\n" + "="*60)
-        print(f"📱 APP NAME: BYTES | COURSE: {deck.topic_title.upper()}")
+        print(f"SYSTEM: BYTES ENGINE | COURSE: {deck.topic_title.upper()}")
         print("="*60)
         print(f"Generated {deck.total_slides} micro-learning slides successfully.\n")
         
         for slide in deck.slides:
             word_count = len(slide.slide_text.split())
             print(f"--- [Slide {slide.slide_number} / {deck.total_slides}]: {slide.subtopic_heading} ---")
-            print(f"📄 Content ({word_count} words):\n{slide.slide_text}\n")
-            print(f"💡 Takeaway: {slide.key_takeaway}")
+            print(f"Content ({word_count} words):\n{slide.slide_text}\n")
+            print(f"Key Takeaway: {slide.key_takeaway}")
             print("-" * 60)
